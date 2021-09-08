@@ -1,0 +1,26 @@
+{% extends "xpndr/base.html" %}
+
+{% block content %}
+
+<h1>New Post Form</h1>
+<br/><br/>
+
+<div class="container">
+<div class="form-group m-3">
+<form method="post"  enctype="multipart/form-data"> 
+{{form.as_p}} 
+{% csrf_token %}
+<input type="submit" value="Add comment" >
+</form>
+</div>
+</div>
+{% comment %} not working
+
+{% if url %}
+    <p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
+{% endif %} {% endcomment %}
+
+
+{% endblock %}
+
+

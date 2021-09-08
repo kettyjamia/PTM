@@ -1,0 +1,184 @@
+{% extends "xpndr/base.html" %}
+{% block title %}{{ comment.ticket }}{% endblock %}
+
+{% block content %}
+
+<h1 class="p-2 m-2 bg-light text-primary">Details</h1>
+<br>
+<table class="table table-striped table-hover table-bordered text-center  align-middle p-2" style="width:90%; margin:auto;">
+  <thead>
+    <tr>
+      <th scope="col">S.No </th>
+      <th scope="col">Attribute</th>
+      <th scope="col">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Ticket Number</td>
+      <td> {{comment.ticket}} </td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Satellite Name</td>
+      <td>{{ comment.satellite }}</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td >Transponder</td>
+      <td>{{ comment.transponder }}</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td >Effected Frequency & Bandwidth</td>
+      <td> {{ comment.frequency }}</td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td >User Details </td>
+      <td>{{ comment.user_detail }}</td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td >Type of Complaint </td>
+      <td>{{ comment.complaint_type }}</td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td >Impact on user link</td>
+      <td>{{ comment.impact }}</td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td >Issue Start Date & Time</td>
+      <td> {{ comment.issue_time }}</td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <td >Level of Priority</td>
+      <td> {{ comment.priority }}</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h1 class="p-2 m-2 bg-light text-success ">Analysis</h1>
+<br>
+    <table class="table table-striped table-hover table-bordered text-center  align-middle p-2" style="width:90%; margin:auto;">
+      <thead>
+        <tr>
+          <th scope="col">S.No</th>
+          <th scope="col">Attribute </th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td >Helix DC </td>
+      <td>{{ comment.helix_dc }}</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td >Operating Point</td>
+      <td>{{ comment.operating_point }}</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td >Details</td>
+      <td> {{ comment.details }}</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td >Published Date</td>
+      <td> {{ comment.publish }}</td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td >Created Date</td>
+      <td> {{ comment.created }}</td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td >Updated Date</td>
+      <td> {{ comment.updated }}</td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td >Active Status</td>
+      <td> {{ comment.active }}</td>
+    </tr>
+  </tbody>
+</table>  
+<br> 
+{% if comment.photo %}  
+<div class="container.fluid m-2 p-2"></div>
+<h3 class="m-3 p-3 text-danger"><p>Image :  </p></h3>
+<h4><a href="{{ comment.photo.url }}" download   target="_blank">
+  <img src="{{ comment.photo.url }}" alt="alt.jpg"  class="img-responsive "  style="  max-height: auto; display: block;   margin-left: auto;  margin-right: auto;  width: 80%;"/></a>
+  <div class="class="mx-2 px-2" ></div>
+<h4 class="p-2 m-2">Size: {{comment.photo.size|filesizeformat}} </h4>
+</div> </h4> {% endif %} 
+
+<!-- hr line after photo
+ <div class="mx-auto px-2" style="  border: 0;
+ clear:both;
+ display:block;
+ width: 90%;               
+ background-color:#FFFF00;
+ height: 2  px;">  <hr />
+ </div> -->
+
+<!-- Attachments <u><i>click to open</i></u> -->
+  
+{% if comment.upload %}
+    <h3  class="mx-2 px-2 text-info"><p>Uploaded files: </p></h3>
+    <h4><li class="mx-2 px-2" >
+    <a href="{{ comment.upload.url }}" target="_blank ">
+      {{comment.upload.name}}
+      <!-- <div class="fst-italic">.....Click to open</div>  -->
+    </a></li>
+    <div class="m-2 p-2">Size: {{comment.upload.size|filesizeformat}}</div>
+  </h4>
+  </div>
+{% endif %} 
+
+<!-- 
+
+
+
+<div class="p-2 m-2 bg-info text-dark border">Ticket Number : <br></div>
+<div  class="p-2 m-2 bg-info bg-gradient text-dark">Satellite Name : {{ comment.satellite }} <br></div>
+<div class="p-2 m-2 bg-info text-dark border">Transponder :  {{ comment.transponder }}<br></div>
+<div class="p-2 m-2 bg-info text-dark border">Effected Frequency &Bandwidth :  {{ comment.frequency }}<br></div>
+<div class="p-2 m-2 bg-info text-dark border">User Details :  {{ comment.user_detail }}<br></div>
+<div class="p-2 m-2 bg-info text-dark border">Type of Complaint :  {{ comment.complaint_type }}<br></div>
+<div class="p-2 m-2 bg-info text-dark border">Impact on user link :  {{ comment.impact }}<br></div>
+<div class="p-2 m-2 bg-info text-dark border">Issue Start Date&Time :  {{ comment.issue_time }} <br></div>
+<div class="p-2 m-2 bg-info text-dark border">Level of Priority :  {{ comment.priority }}<br></div>
+
+h1 class="p-2 m-2 bg-light text-dark">Analysis</h1>
+
+Helix DC :  {{ comment.helix_dc }}<br>
+Operating Point :  {{ comment.operating_point }}<br>
+Details :  {{ comment.details }}<br>
+Publish Date:  {{ comment.publish }}<br>
+Created Date :  {{ comment.created }}<br>
+Updated Date :  {{ comment.updated }}<br>
+Active Status : {{ comment.active }}<br> -->
+
+<!--   {% if new_comment %}
+<h2>Your comment has been added.</h2>
+{% else %}
+<h2>Add a new comment</h2>
+<form method="post">
+{{form.as_p}}
+{% comment %} {{ comment_form.as_p }} {% endcomment %}
+{% csrf_token %}
+<p><input type="submit" value="Add comment"></p>
+</form>
+{% endif %} -->
+
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+activate myDjangoEnv
+cd My_Django_stuff
+cd first project
+cd first project
+
+django-admin startproject mysite
+
+python manage.py startapp blog
+
+python manage.py runserver
+admin
+mcfiot123
+
+
+py -m venv env
+.\env\Scripts\activate
+
+conda activate myDjangoEnv 
+python manage.py makemigrations
+python manage.py migrate   
+
+f=Comment.objects.get(id=1).transponder.transponder_number
+
+Question.objects.filter(question_text__startswith='What')
+
+
+pg 120
+
+photo = models.ImageField(upload_to='users/%Y/%m/%d/',
+blank=True)
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+static files serving
+
+pg 168 234

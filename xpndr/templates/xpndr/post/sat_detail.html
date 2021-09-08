@@ -1,0 +1,20 @@
+{% extends "xpndr/base.html" %}
+
+{% block content %}
+<form method="POST">
+{% comment %} <form action="{% url 'xpndr:sat_detail' comment.satellite.id %}" method="post"> {% endcomment %}
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit">
+{% comment %} <input type="submit" value="satellite.id"> {% endcomment %}
+</form>
+{% endblock %}
+
+{% comment %} <fieldset>
+    <legend><h1>{{ comment.satellite }}</h1></legend>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% for satellite in comment.satellite_set.all %}
+        <input type="radio" name="satellite" id="satellite{{ forloop.counter }}" value="{{ satellite.id }}">
+        <label for="satellite{{ forloop.counter }}">{{ satellite.satellite }}</label><br>
+    {% endfor %}
+</fieldset> {% endcomment %}
